@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+  background-color: #f5f6ff;
+}
+
+.MainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.tilted-div:hover {
+  transform: rotate(3deg);
+  /* Adjust the angle as needed */
+}
+
+.truncated-text {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.truncated-text div {
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.circle {
+  display: flex;
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1class {
+  font-size: 200%;
+}
+
+.pclass {
+  font-size: 100%;
+}
+
+@media all and (min-width: 1621px) and (max-width: 1750px) {
+  .circle {
+    height: 130px;
+    width: 130px;
+  }
+}
+
+
+@media all and (min-width: 1585px) and (max-width: 1620px) {
+  .circle {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+
+@media all and (min-width: 1480px) and (max-width: 1584px) {
+  .circle {
+    height: 95px;
+    width: 95px;
+  }
+
+  .fontForLast {
+    font-size: 60%;
+  }
+}
+
+
+@media all and (min-width: 480px) and (max-width: 1580px) {
+  .circle {
+    height: 75px;
+    width: 75px;
+  }
+
+  .topFont {
+    font-size: 80%;
+  }
+
+  .fontForLast {
+    font-size: 50%;
+  }
+
+
+  .h1class {
+    font-size: 170%;
+  }
+
+  .pclass {
+    font-size: 90%;
+  }
+}
+
+
+
+@media all and (min-width: 250px) and (max-width: 480px) {
+  .circle {
+    height: 95px;
+    width: 95px;
+  }
+
+  .topFont {
+    font-size: 80%;
+  }
+
+  .fontForLast {
+    font-size: 70%;
+  }
+
+  .h1clas {
+    font-size: 100%;
+  }
+
+  .h1class {
+    font-size: 150%;
+  }
+
+  .pclass {
+    font-size: 80%;
+  }
+}
