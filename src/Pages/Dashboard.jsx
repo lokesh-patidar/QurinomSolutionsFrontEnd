@@ -11,10 +11,6 @@ import { SearchIcon } from "@chakra-ui/icons";
 
 const Dashboard = () => {
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <Box
             width={{ base: '100%', md: '75%', lg: '80%' }}
@@ -41,7 +37,7 @@ const Dashboard = () => {
             <Box bg='white' borderRadius='10px' p={2} pt={3}>
                 <Box display='flex' justifyContent='space-between'>
                     <Box fontWeight={'bold'} w='fit-content'>Product Sell</Box>
-                    <Box display='flex' flexDir={{ base: 'column', md: 'row' }} maxW={{ base: '100px', sm: '200px', md: '400px' }}>
+                    {/* <Box display='flex' flexDir={{ base: 'column', md: 'row' }} maxW={{ base: '100px', sm: '200px', md: '400px' }}>
                         <InputGroup size={'sm'} mr={{ base: 0, md: 2 }}>
                             <InputLeftElement pointerEvents='none'>
                                 <SearchIcon color='gray.300' />
@@ -50,7 +46,7 @@ const Dashboard = () => {
                         </InputGroup>
                         <Select size={'sm'} placeholder="Last 30 days">
                         </Select>
-                    </Box>
+                    </Box> */}
                 </Box>
 
                 <TableContainer mt={3}>

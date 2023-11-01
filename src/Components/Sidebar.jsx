@@ -1,9 +1,9 @@
-import { 
-    Accordion, 
-    AccordionButton, 
-    AccordionItem, 
-    Avatar, 
-    Box, 
+import {
+    Accordion,
+    AccordionButton,
+    AccordionItem,
+    Avatar,
+    Box,
     Text,
     Menu,
     MenuButton,
@@ -14,6 +14,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { SidebarData } from "../Data/SidebarData";
 import { BiChevronRight, BiChevronDown } from "react-icons/bi";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutFunction } from "../ReduxToolkit/Authentication/authenticationActions";
+import { getUserProfileFunc } from "../ReduxToolkit/UserProfile/userProfileActions";
+import { useEffect } from "react";
 
 const SideBar = () => {
 
@@ -22,6 +26,17 @@ const SideBar = () => {
     var urlName = pathname.substring(1);
     const text = urlName.split("/");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { user, isUserProfileLoading, isUserProfileError } = useSelector((state) => state?.userprofile)
+
+    useEffect(() => {
+        dispatch(getUserProfileFunc());
+    }, []);
+
+    const handleLogout = () => {
+        console.log('LOGOUT');
+        dispatch(logoutFunction(navigate));
+    };
 
     return (
         <Box
@@ -84,14 +99,13 @@ const SideBar = () => {
                             <Box display='flex' justifyContent='left' alignItems='center'>
                                 <Avatar size='sm' src='https://bit.ly/ryan-florence' />
                                 <Box pl={2} display='flex' flexDir='column'>
-                                    <Text display='flex' textAlign='left' color='white' fontSize='90%' >Evano</Text>
+                                    <Text display='flex' textAlign='left' color='white' fontSize='90%' >{user?.userName || 'Evano'}</Text>
                                     <Text display='flex' textAlign='left' color='white' fontSize='70%' >Project Manager</Text>
                                 </Box>
                             </Box>
                         </MenuButton>
                         <MenuList>
-                            <MenuItem>Profile</MenuItem>
-                            <MenuItem>Logout</MenuItem>
+                            <MenuItem onClick={() => handleLogout()} color={'red'} fontWeight={500}>Logout</MenuItem>
                         </MenuList>
                     </Menu>
                     <BiChevronDown color='white' />

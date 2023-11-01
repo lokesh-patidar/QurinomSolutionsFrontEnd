@@ -2,10 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    user: [],
+    user: {},
     isUserProfileLoading: false,
     isUserProfileError: false,
-    userProfileErrorMsg: '',
 };
 
 const userProfileSlice = createSlice({
@@ -15,19 +14,16 @@ const userProfileSlice = createSlice({
         getUserProfileRequest(state) {
             state.isUserProfileLoading = true;
             state.isUserProfileError = false;
-            state.userProfileErrorMsg = '';
         },
         getUserProfileSuccess(state, action) {
-            state.user = action.payload ? action.payload : [];
+            state.user = action.payload ? action.payload : {};
             state.isUserProfileLoading = false;
             state.isUserProfileError = false;
-            state.userProfileErrorMsg = '';
         },
         getUserProfileFailure(state, action) {
-            state.user = [];
+            state.user = {};
             state.isUserProfileLoading = false;
             state.isUserProfileError = true;
-            state.userProfileErrorMsg = '';
         },
     },
 });

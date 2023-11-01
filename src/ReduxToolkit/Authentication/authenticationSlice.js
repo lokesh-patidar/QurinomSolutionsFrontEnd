@@ -41,10 +41,8 @@ const authenticationSlice = createSlice({
         // Logout
         logoutRequest(state) {},
         logoutSuccess(state, action) {
-            console.log("logout msg:", action?.payload?.message);
-            localStorage.removeItem("event_token");
-            state.token = false;
-            state.logoutMsg = action?.message;
+            localStorage.removeItem("qurinomToken");
+            state.token = '';
         },
         logoutFailure(state, action) {},
     },

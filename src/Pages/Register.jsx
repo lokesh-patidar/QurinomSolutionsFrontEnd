@@ -22,8 +22,9 @@ import {
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginFunction } from "../ReduxToolkit/Authentication/authenticationActions";
+import { registerFunction } from "../ReduxToolkit/Authentication/authenticationActions";
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { FiUser } from "react-icons/fi";
 
 
 const RegisterPage = () => {
@@ -34,6 +35,7 @@ const RegisterPage = () => {
      const [loading, setLoading] = useState(false);
 
      const [formData, setFormData] = useState({
+          userName: '',
           email: '',
           password: '',
      });
@@ -48,6 +50,7 @@ const RegisterPage = () => {
 
      const resetFormData = () => {
           setFormData({
+               userName: '',
                email: '',
                password: '',
           });
@@ -55,22 +58,10 @@ const RegisterPage = () => {
 
      const handleClick = () => setShow(!show);
 
-     const handleSignIn = () => {
-          if (formData?.email && formData?.password) {
+     const handleRegister = () => {
+          if (formData?.userName && formData?.email && formData?.password) {
                console.log({ formData });
-               dispatch(loginFunction(formData, navigate, setLoading, resetFormData));
-          }
-          else if (formData?.email !== '' && formData?.password === '') {
-               toast.error('Please enter password!', {
-                    autoClose: 1500,
-                    position: 'top-center',
-               });
-          }
-          else if (formData?.email === '' && formData?.password !== '') {
-               toast.error('Please enter email!', {
-                    autoClose: 1500,
-                    position: 'top-center',
-               });
+               dispatch(registerFunction(formData, navigate, setLoading, resetFormData));
           }
      };
 
@@ -102,7 +93,23 @@ const RegisterPage = () => {
                                              <Box m={8} color="#0B0E3F">
                                                   <Text fontSize={'150%'} fontWeight={'bold'} mb={2} color={'teal'}>Register</Text>
                                                   <VStack spacing={3}>
-                                                       <FormControl id="name">
+                                                       <FormControl>
+                                                            <FormLabel>Username</FormLabel>
+                                                            <InputGroup borderColor="#E0E1E7">
+                                                                 <InputLeftElement pointerEvents="none">
+                                                                      <FiUser color="gray.800" />
+                                                                 </InputLeftElement>
+                                                                 <Input
+                                                                      size={'md'}
+                                                                      type="text"
+                                                                      value={formData?.userName}
+                                                                      name='userName'
+                                                                      placeholder='Enter username'
+                                                                      onChange={handleInputChange}
+                                                                 />
+                                                            </InputGroup>
+                                                       </FormControl>
+                                                       <FormControl>
                                                             <FormLabel>Mail</FormLabel>
                                                             <InputGroup borderColor="#E0E1E7">
                                                                  <InputLeftElement pointerEvents="none">
@@ -118,7 +125,7 @@ const RegisterPage = () => {
                                                                  />
                                                             </InputGroup>
                                                        </FormControl>
-                                                       <FormControl id="name">
+                                                       <FormControl>
                                                             <FormLabel>Password</FormLabel>
                                                             <InputGroup borderColor="#E0E1E7">
                                                                  <InputLeftElement onClick={handleClick}>
@@ -134,12 +141,12 @@ const RegisterPage = () => {
                                                                  />
                                                             </InputGroup>
                                                        </FormControl>
-                                                       <FormControl id="name" float="right">
+                                                       <FormControl float="right">
                                                             <Button
                                                                  variant="solid"
                                                                  bg="#0D74FF"
                                                                  color="white"
-                                                                 onClick={() => handleSignIn()}
+                                                                 onClick={() => handleRegister()}
                                                                  isLoading={loading}>
                                                                  Register
                                                             </Button>
