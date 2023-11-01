@@ -10,7 +10,6 @@ const AllRoute = () => {
 
   return (
     <Routes>
-      {/* Dashboard  */}
       <Route path={`/`} element={
         <Box width='100%'>
           <Box className='MainContainer'>
