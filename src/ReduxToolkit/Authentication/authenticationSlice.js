@@ -23,7 +23,7 @@ const authenticationSlice = createSlice({
         },
         loginSuccess(state, action) {
             console.log({ action });
-            localStorage.setItem("event_token", action?.payload?.token);
+            localStorage.setItem("qurinomToken", action?.payload?.token);
             state.user = action.payload;
             state.isAuthLoading = false;
             state.isAuthError = false;
